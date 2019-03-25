@@ -51,7 +51,7 @@ void easyPWM_init(sysclk_div clk){
 //	                   | 0 << TCA_SPLIT_LUNF_bp;	/* Low Underflow Interrupt Enable: disabled */
 
 	TCA0.SPLIT.CTRLA = clk	                 /* System Clock */
-				| 1 << TCA_SPLIT_ENABLE_bp;  /* Module Enable: enabled */
+	            | 1 << TCA_SPLIT_ENABLE_bp;  /* Module Enable: enabled */
 }
 
 void easyPWM_enable_DebugRun(void){
