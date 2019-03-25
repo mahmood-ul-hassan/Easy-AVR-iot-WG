@@ -119,11 +119,11 @@ void easyPWM_disable_output_ch5(void){
 }
 
 void easyPWM_L_counter(uint8_t counter_value){
-	TCA0.SPLIT.LCNT = 0x0; /* LCount: 0x0 */
+	TCA0.SPLIT.LCNT = counter_value;
 }
 
 void easyPWM_H_counter(uint8_t counter_value){
-	TCA0.SPLIT.HCNT = 0x0; /* HCount: 0x0 */
+	TCA0.SPLIT.HCNT = counter_value;
 }
 
 void easyPWM_L_top(uint8_t top_value){
