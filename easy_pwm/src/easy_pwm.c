@@ -21,11 +21,11 @@ void easyPWM_init(sysclk_div clk){
 
 
 //	TCA0.SPLIT.CTRLC = 0 << TCA_SPLIT_HCMP0OV_bp	/* High Compare 0 Output Value: disabled */
-//					 | 0 << TCA_SPLIT_HCMP1OV_bp	/* High Compare 1 Output Value: disabled */
-//					 | 0 << TCA_SPLIT_HCMP2OV_bp	/* High Compare 2 Output Value: disabled */
-//					 | 0 << TCA_SPLIT_LCMP0OV_bp	/* Low Compare 0 Output Value: disabled */
-//					 | 0 << TCA_SPLIT_LCMP1OV_bp	/* Low Compare 1 Output Value: disabled */
-//					 | 0 << TCA_SPLIT_LCMP2OV_bp;	/* Low Compare 2 Output Value: disabled */
+//	                 | 0 << TCA_SPLIT_HCMP1OV_bp	/* High Compare 1 Output Value: disabled */
+//	                 | 0 << TCA_SPLIT_HCMP2OV_bp	/* High Compare 2 Output Value: disabled */
+//	                 | 0 << TCA_SPLIT_LCMP0OV_bp	/* Low Compare 0 Output Value: disabled */
+//	                 | 0 << TCA_SPLIT_LCMP1OV_bp	/* Low Compare 1 Output Value: disabled */
+//	                 | 0 << TCA_SPLIT_LCMP2OV_bp;	/* Low Compare 2 Output Value: disabled */
 
 
 //	TCA0.SPLIT.HCMP0 = 0x0; /* Compare value of channel 0: 0x0 */
@@ -50,8 +50,8 @@ void easyPWM_init(sysclk_div clk){
 //	                   | 0 << TCA_SPLIT_LCMP2_bp	/* Low Compare 2 Interrupt Enable: disabled */
 //	                   | 0 << TCA_SPLIT_LUNF_bp;	/* Low Underflow Interrupt Enable: disabled */
 
-	TCA0.SPLIT.CTRLA = clk    /* System Clock */
-	| 1 << TCA_SPLIT_ENABLE_bp; /* Module Enable: enabled */
+	TCA0.SPLIT.CTRLA = clk	                 /* System Clock */
+				| 1 << TCA_SPLIT_ENABLE_bp;  /* Module Enable: enabled */
 }
 
 void easyPWM_enable_DebugRun(void){
