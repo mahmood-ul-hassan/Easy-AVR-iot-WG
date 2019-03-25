@@ -10,44 +10,45 @@ easypwm_irq_cb_t easyPWM_H_cb = NULL;
 
 void easyPWM_init(sysclk_div clk){
 
-//	TCA0.SPLIT.LCMP0 = 0xFF; /* Setting: 0xFF */
-//	TCA0.SPLIT.LCMP1 = 0xFF; /* Setting: 0xFF */
-//	TCA0.SPLIT.LCMP2 = 0xFF; /* Setting: 0xFF */
+	TCA0.SPLIT.CTRLD = 1 << TCA_SPLIT_SPLITM_bp; /* Split Mode : enabled */
 
-//	TCA0.SPLIT.HCMP0 = 0xFF; /* Setting: 0xFF */
-//	TCA0.SPLIT.HCMP1 = 0xFF; /* Setting: 0xFF */
-//	TCA0.SPLIT.HCMP2 = 0xFF; /* Setting: 0xFF */
-
-//	TCA0.SPLIT.LCNT = 0x0; /* LCount: 0x0 */
-//	TCA0.SPLIT.HCNT = 0x0; /* HCount: 0x0 */
+//	TCA0.SPLIT.CTRLB = 0 << TCA_SPLIT_HCMP0EN_bp	/* High Compare 0 Enable: disabled */
+//	                 | 0 << TCA_SPLIT_HCMP1EN_bp	/* High Compare 1 Enable: enabled */
+//	                 | 0 << TCA_SPLIT_HCMP2EN_bp	/* High Compare 2 Enable: disabled */
+//	                 | 0 << TCA_SPLIT_LCMP0EN_bp	/* Low Compare 0 Enable: disabled */
+//	                 | 0 << TCA_SPLIT_LCMP1EN_bp	/* Low Compare 1 Enable: disabled */
+//	                 | 0 << TCA_SPLIT_LCMP2EN_bp;	/* Low Compare 2 Enable: disabled */
 
 
-//	TCA0.SPLIT.CTRLB = 0 << TCA_SPLIT_LCMP0EN_bp
-//					 | 0 << TCA_SPLIT_LCMP1EN_bp;
-//					 | 0 << TCA_SPLIT_LCMP2EN_bp;
-//					 | 0 << TCA_SPLIT_HCMP0EN_bp;
-//					 | 0 << TCA_SPLIT_HCMP1EN_bp;
-//					 | 0 << TCA_SPLIT_HCMP2EN_bp;
+//	TCA0.SPLIT.CTRLC = 0 << TCA_SPLIT_HCMP0OV_bp	/* High Compare 0 Output Value: disabled */
+//					 | 0 << TCA_SPLIT_HCMP1OV_bp	/* High Compare 1 Output Value: disabled */
+//					 | 0 << TCA_SPLIT_HCMP2OV_bp	/* High Compare 2 Output Value: disabled */
+//					 | 0 << TCA_SPLIT_LCMP0OV_bp	/* Low Compare 0 Output Value: disabled */
+//					 | 0 << TCA_SPLIT_LCMP1OV_bp	/* Low Compare 1 Output Value: disabled */
+//					 | 0 << TCA_SPLIT_LCMP2OV_bp;	/* Low Compare 2 Output Value: disabled */
 
-//	TCA0.SPLIT.CTRLC = 0 << TCA_SPLIT_LCMP0OV_bp
-//					 | 0 << TCA_SPLIT_LCMP1OV_bp;
-//					 | 0 << TCA_SPLIT_LCMP2OV_bp;
-//					 | 0 << TCA_SPLIT_HCMP0OV_bp;
-//					 | 0 << TCA_SPLIT_HCMP1OV_bp;
-//					 | 0 << TCA_SPLIT_HCMP2OV_bp;
+
+//	TCA0.SPLIT.HCMP0 = 0x0; /* Compare value of channel 0: 0x0 */
+//	TCA0.SPLIT.HCMP1 = 0x0; /* Compare value of channel 1: 0x0 */
+//	TCA0.SPLIT.HCMP2 = 0x0; /* Compare value of channel 2: 0x0 */
+
+//	TCA0.SPLIT.HCNT = 0x0; /*  High-byte Timer Counter Register: 0x0 */
+//	TCA0.SPLIT.HPER = 0xff; /*  High-byte Period Register: 0xff */
+
+//	TCA0.SPLIT.LCMP0 = 0x0; /* Compare value Channel 0: 0x0 */
+//	TCA0.SPLIT.LCMP1 = 0x0; /* Compare value Channel 1: 0x0 */
+//	TCA0.SPLIT.LCMP2 = 0x0; /* Compare value Channel 2: 0x0 */
+
+//	TCA0.SPLIT.LCNT = 0x0; /* Low-byte Timer Counter Register: 0x0 */
+//	TCA0.SPLIT.LPER = 0xff; /*  Low-byte Timer Period Register: 0xff */
 	
-	TCA0.SPLIT.CTRLD = 1 << TCA_SPLIT_SPLITM_bp;
-
 //	TCA0.SPLIT.DBGCTRL = 0 << TCA_SINGLE_DBGRUN_bp; /* Debug Run: disabled */
 
-//	TCA0.SINGLE.INTCTRL = 0 << TCA_SPLIT_LCMP0_bp /* Compare L0 Interrupt: disabled */
-//						| 0 << TCA_SPLIT_LCMP1_bp /* Compare L1 Interrupt: disabled */
-//						| 0 << TCA_SPLIT_LCMP2_bp /* Compare L2 Interrupt: disabled */
-//						| 0 << TCA_SPLIT_LUNF_bp /* Low  byte Underflow Interrupt: disabled */
-//						| 0 << TCA_SPLIT_HUNF_bp /* High byte Underflow Interrupt: disabled */
-
-//	TCA0.SPLIT.LPER = 0xff; /* Top Value: 0xffff */
-//	TCA0.SPLIT.HPER = 0xff; /* Top Value: 0xffff */
+//	TCA0.SPLIT.INTCTRL = 0 << TCA_SPLIT_HUNF_bp		/*High Underflow Interrupt Enable: disabled */
+//	                   | 0 << TCA_SPLIT_LCMP0_bp	/* Low Compare 0 Interrupt Enable: disabled */
+//	                   | 0 << TCA_SPLIT_LCMP1_bp	/* Low Compare 1 Interrupt Enable: disabled */
+//	                   | 0 << TCA_SPLIT_LCMP2_bp	/* Low Compare 2 Interrupt Enable: disabled */
+//	                   | 0 << TCA_SPLIT_LUNF_bp;	/* Low Underflow Interrupt Enable: disabled */
 
 	TCA0.SPLIT.CTRLA = clk    /* System Clock */
 	| 1 << TCA_SPLIT_ENABLE_bp; /* Module Enable: enabled */
